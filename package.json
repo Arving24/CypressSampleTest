@@ -6,7 +6,7 @@
   "scripts": {
     "pretest": "echo Test is starting",
     "posttest": "echo Test completed",
-    "test": "echo Test is running...."
+    "test": "cypress run"
   },
   "author": "",
   "license": "ISC",
