@@ -6,7 +6,8 @@
   "scripts": {
     "pretest": "echo Test is starting",
     "posttest": "echo Test completed",
-    "test": "cypress run"
+    "test": "cypress run",
+    "html-report" : "cypress run pageObjectDemo.cy.js --browser chrome --headed"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +16,7 @@
     "cypress-downloadfile": "^1.2.3"
   },
   "devDependencies": {
-    "cypress-file-upload": "^5.0.8"
+    "cypress-file-upload": "^5.0.8",
+    "cypress-mochawesome-reporter": "^3.8.0"
   }
 }

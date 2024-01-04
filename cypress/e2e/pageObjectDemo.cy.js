@@ -13,6 +13,15 @@ describe("All login test", () => {
     loginPage.login("Katharina_Bernier", "s3cret");
 
     cy.get('[data-test="sidenav-username"]').should("be.visible");
+
+    loginPage.navToAcc();
+
+    loginPage.validateAccount();
+
+    cy.go('forward')
+    
+    cy.go('back')
+
   });
 
   it("Login with invalid username", () => {
