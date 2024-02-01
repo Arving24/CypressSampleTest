@@ -24,6 +24,26 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+import { LoginPage } from "../e2e/pages/login_page";
 import 'cypress-file-upload';
 
 require('cypress-downloadfile/lib/downloadFileCommand')
+
+
+//store login session
+const loginPage = new LoginPage();
+
+Cypress.Commands.add('login', (username, password) => {
+    cy.session(
+      username,
+      () => {
+        cy.visit('/signin')
+        loginPage.login(username, password)
+      },
+    //   {
+    //     validate: () => {
+    //       cy.getCookie('your-session-cookie').should('exist')
+    //     },
+    //   }
+    )
+  })

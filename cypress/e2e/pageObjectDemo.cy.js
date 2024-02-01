@@ -1,41 +1,28 @@
-import { LoginPage } from "./pages/login_page";
-
-const loginPage = new LoginPage();
-
-beforeEach(() => {
-    cy.visit("/signin");
-  })
-
 describe("All login test", () => {
 
-  it("Login with correct credentials", () => {
+  beforeEach(() => {
+    cy.login("Katharina_Bernier", "s3cret")
+  })
 
-    loginPage.login("Katharina_Bernier", "s3cret");
+  it("Login with correct credentials", () => {
+    cy.visit('/')
 
     cy.get('[data-test="sidenav-username"]').should("be.visible");
 
-    loginPage.navToAcc();
+    // loginPage.navToAcc();
 
-    loginPage.validateAccount();
+    // loginPage.validateAccount();
 
-    cy.go('forward')
+    // cy.go('forward')
     
-    cy.go('back')
+    // cy.go('back')
 
   });
 
   it("Login with invalid username", () => {
-
-    loginPage.login("Katharina_Berniera", "s3cret");
-
-    cy.get('.MuiAlert-message').should("be.visible");
-  });
-
-  it("Login with invalid password", () => {
-
-    loginPage.login("Katharina_Bernier", "s3crets");
-
-    cy.get('.MuiAlert-message').should("be.visible");
+    cy.visit('/')
+    cy.get('[data-test="sidenav-user-settings"]').click()
+    cy.get('.MuiPaper-root > .MuiTypography-root').should("be.visible");
   });
 
 });

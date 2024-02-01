@@ -8,20 +8,20 @@ export class LoginPage{
     validateAccounts = ".MuiPaper-root > .MuiTypography-root"
 
     enterUsername(username) {
-        cy.get(this.username_input).type(username)
+        cy.get(this.username_input).clear().type(username).blur()
     }
 
     enterPassword(password) {
-        cy.get(this.password_input).type(password)
+        cy.get(this.password_input).clear().type(password)
     }
 
-    navToAcc() {
-        cy.get(this.accounts).click()
-    }
+    // navToAcc() {
+    //     cy.get(this.accounts).click()
+    // }
 
-    validateAccount() {
-        cy.get(this.validateAccounts).should("be.visible")
-    }
+    // validateAccount() {
+    //     cy.get(this.validateAccounts).should("be.visible")
+    // }
 
     clickLogin() {
         cy.get(this.login_button).click()
