@@ -1,0 +1,18 @@
+{
+  "valid_creds": [
+    {
+      "username": "Heath93",
+      "password": "s3cret"
+    },
+    {
+      "username": "Arvilla_Hegmann",
+      "password": "s3cret"
+    }
+  ],
+  "invalid_creds": [
+    {
+      "username": "Heath931",
+      "password": "s3cret1"
+    }
+  ]
+}

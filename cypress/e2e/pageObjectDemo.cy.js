@@ -1,29 +1,24 @@
+import { LoginPage } from "./pages/login_page";
+
+let loginPage = new LoginPage();
+
 describe("All login test", () => {
+  const testData = require("../fixtures/login_data.json");
 
-  beforeEach(() => {
-    cy.login("Katharina_Bernier", "s3cret")
-  })
-
-  it("Login with correct credentials", () => {
-    cy.visit('/')
-
-    cy.get('[data-test="sidenav-username"]').should("be.visible");
-
-    // loginPage.navToAcc();
-
-    // loginPage.validateAccount();
-
-    // cy.go('forward')
-    
-    // cy.go('back')
-
+  testData.valid_creds.forEach((data) => {
+    it("Login with correct credentials", () => {
+      cy.visit("/");
+      loginPage.login(data.username, data.password);
+      cy.get('[data-test="sidenav-username"]').should("be.visible");
+      loginPage.clickLogoutButton();
+    });
   });
 
-  it("Login with invalid username", () => {
-    cy.visit('/')
-    cy.get('[data-test="sidenav-user-settings"]').click()
-    cy.get('.MuiPaper-root > .MuiTypography-root').should("be.visible");
+  testData.invalid_creds.forEach((data) => {
+    it("Login with correct credentials", () => {
+      cy.visit("/");
+      loginPage.login(data.username, data.password);
+      loginPage.errMessage();
+    });
   });
-
 });
-
