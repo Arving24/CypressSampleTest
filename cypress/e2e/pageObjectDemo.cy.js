@@ -15,7 +15,7 @@ describe("All login test", () => {
   });
 
   testData.invalid_creds.forEach((data) => {
-    it("Login with correct credentials", () => {
+    it("Login with invalid credentials", () => {
       cy.visit("/");
       loginPage.login(data.username, data.password);
       loginPage.errMessage();
